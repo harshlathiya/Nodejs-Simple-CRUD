@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+    <form action="/editstud" method="post" enctype="multipart/form-data">
+        <input type="text" name="id" value="<%= st.id %>" hidden>
+        <tr>
+            <td>Name</td>
+            <td><input type="text" name="name"  value="<%= st.name%>"></td>
+        </tr>
+        <tr>
+            <td>Age</td>
+            <td><input type="number" name="age" value="<%= st.age%>" ></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td> 
+                <input type="radio" name="gender" id="" value="male" <% if(st.gender == "male" ) { %><%= 'checked' %> <%}%> >Male
+                <input type="radio" name="gender" id="" value="female" <% if(st.gender == "female" )  { %><%= 'checked' %> <%}%> >Female
+            </td>
+        </tr>
+        <tr>
+            <td>Hobby</td>
+            <td>
+                <input type="checkbox" name="hobby" id="" value="running" <% if(st.hobby.includes('running')) {%> <%= 'checked' %> <%}%> >Running
+                <input type="checkbox" name="hobby" id="" value="swiming" <% if(st.hobby.includes('swiming')) { %> <%= 'checked' %> <%}%> >Swiming
+                <input type="checkbox" name="hobby" id="" value="music" <% if(st.hobby.includes('music'))  { %> <%= 'checked' %> <%}%> >Music
+            </td>
+        </tr>
+        <tr>
+            <% var citys = ['Surat','Vapi','bharuch']%>
+            <td>City</td>
+            <td>
+                <select name="citys" id="">
+                    <option value="">---Select City ---</option>
+                    <% citys.map((v)=>{  %>
+                        <option value="<%= v %>" <% if( st.citys == v){ %> <%= 'selected'%> <%}%> ><%= v %></option>
+                    <%})%>   
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Images</td>
+            <td>
+                <input type="file" name="adminimage">
+                <img src="<%= st.adminimage %>" alt="" width="300px">
+            
+            </td>
+        </tr>
+
+
+        
+
+        <tr>
+            <td></td>
+            <td><input type="submit" name="submit" value="Add" ></td>
+        </tr>
+    </form>
+</table>
+</body>
+</html>
